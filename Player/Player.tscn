@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Player/Player.gd" type="Script" id=1]
+[ext_resource path="res://Player/Shotgun.gd" type="Script" id=2]
+[ext_resource path="res://Player/Interaction.gd" type="Script" id=3]
+
+[sub_resource type="CapsuleShape" id=1]
+radius = 0.75
+height = 1.25
+
+[sub_resource type="CapsuleMesh" id=2]
+radius = 0.75
+mid_height = 1.25
+
+[node name="Player" type="KinematicBody"]
+script = ExtResource( 1 )
+mouse_sensetivity = 0.15
+
+[node name="Head" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.06944, 0 )
+
+[node name="Camera" type="Camera" parent="Head"]
+
+[node name="RayCast" type="RayCast" parent="Head/Camera"]
+enabled = true
+cast_to = Vector3( 0, 0, -100 )
+
+[node name="InteractionRayCast" type="RayCast" parent="Head/Camera"]
+enabled = true
+cast_to = Vector3( 0, 0, -2 )
+collision_mask = 2
+script = ExtResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Weapon" type="Node" parent="."]
+script = ExtResource( 2 )
+clip_size = 2
