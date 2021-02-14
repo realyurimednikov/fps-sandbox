@@ -6,6 +6,7 @@ class_name Weapon
 export var fire_rate = 0.5
 export var clip_size = 5
 export var reload_rate = 1
+export var damage_value = 25
 
 
 var current_ammo = 0 
@@ -25,14 +26,11 @@ func _ready():
 	update_ui()
 	
 
-func check_collision():
+func fire():
 	if raycast.is_colliding():
-		print('collide!')
 		var col = raycast.get_collider()
 		if col.is_in_group('Enemies'):
-			print('Enemy!')
-			col.queue_free()
-			print('killed!' + col.name)
+			col.damage(damage_value)
 
 
 func _process(delta):
@@ -42,7 +40,7 @@ func _process(delta):
 			print('Fire!')
 			can_fire = false
 			current_ammo -= 1
-			check_collision()
+			fire()
 			yield(get_tree().create_timer(fire_rate), "timeout")
 		
 			can_fire = true

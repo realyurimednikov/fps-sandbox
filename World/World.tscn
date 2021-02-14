@@ -3,7 +3,7 @@
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI/UI.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Interactable/InteractableLightSwitch.gd" type="Script" id=3]
-[ext_resource path="res://default_env.tres" type="Environment" id=4]
+[ext_resource path="res://Objects/Enemy.tscn" type="PackedScene" id=4]
 
 [sub_resource type="SpatialMaterial" id=1]
 
@@ -23,9 +23,6 @@ material = SubResource( 4 )
 data = PoolVector3Array( -1, 1, 1, 1, 1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, -1, -1, 1, 1, -1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1 )
 
 [node name="World" type="Spatial"]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource( 4 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 
@@ -70,3 +67,11 @@ shape = SubResource( 6 )
 [node name="SpotLight" type="SpotLight" parent="."]
 transform = Transform( -0.64342, -0.765183, 0.0224619, -0.705497, 0.581332, -0.405373, 0.297127, -0.276672, -0.913875, 0, -0.723528, 12.9971 )
 spot_angle = 50.0333
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="Enemy" parent="Enemies" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.659191, -14.6784 )
+
+[node name="Enemy2" parent="Enemies" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6204, 1.20387, 0 )
