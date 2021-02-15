@@ -31,12 +31,24 @@ func fire():
 		var col = raycast.get_collider()
 		if col.is_in_group('Enemies'):
 			col.damage(damage_value)
+			
+
+func reload():
+	animation_player.stop()
+	reloading = true
+	print('reloading...')
+	yield(get_tree().create_timer(reload_rate), "timeout")
+	current_ammo = clip_size
+	print('reload complete')
+	reloading = false
+	update_ui()
 
 
 func _process(delta):
+	if Input.is_action_pressed("reload") and not reloading:
+		reload()
 	if Input.is_action_just_pressed("primary_fire") and can_fire:
 		if current_ammo > 0 and not reloading:
-			
 			
 			can_fire = false
 			current_ammo -= 1
@@ -44,24 +56,12 @@ func _process(delta):
 				fire()
 			animation_player.play("FireAnimation")
 			yield(get_tree().create_timer(fire_rate), "timeout")
-		
 			can_fire = true
 			
-			
 		elif not reloading:
-			
-			animation_player.stop()
-			
-			reloading = true
-			print('reloading...')
-			
-			yield(get_tree().create_timer(reload_rate), "timeout")
-			
-			current_ammo = clip_size
-			print('reload complete')
-			reloading = false
+			reload()
 
 		else:
 			animation_player.stop()
-		
+			
 		update_ui()		
