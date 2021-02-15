@@ -14,8 +14,8 @@ var can_fire = true
 var reloading = false
 
 
-onready var raycast = $"../Head/Camera/RayCast"
-
+onready var raycast = $"../RayCast"
+onready var animation_player = $"../AnimationPlayer"
 
 func update_ui():
 	get_tree().call_group("UI", "update_ui", current_ammo, clip_size)
@@ -37,15 +37,20 @@ func _process(delta):
 	if Input.is_action_just_pressed("primary_fire") and can_fire:
 		if current_ammo > 0 and not reloading:
 			
-			print('Fire!')
+			
 			can_fire = false
 			current_ammo -= 1
-			fire()
+			if not animation_player.is_playing():
+				fire()
+			animation_player.play("FireAnimation")
 			yield(get_tree().create_timer(fire_rate), "timeout")
 		
 			can_fire = true
 			
+			
 		elif not reloading:
+			
+			animation_player.stop()
 			
 			reloading = true
 			print('reloading...')
@@ -55,5 +60,8 @@ func _process(delta):
 			current_ammo = clip_size
 			print('reload complete')
 			reloading = false
+
+		else:
+			animation_player.stop()
 		
 		update_ui()		
