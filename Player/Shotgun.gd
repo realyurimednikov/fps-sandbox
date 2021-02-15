@@ -1,8 +1,4 @@
-#extends "res://Player/Weapon.gd"
 extends Weapon
-
-#onready var raycast = $"../Head/Camera/RayCast"
-
 
 export var fire_range = 10
 
