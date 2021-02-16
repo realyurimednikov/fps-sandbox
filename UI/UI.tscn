@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://UI/UI.gd" type="Script" id=1]
 [ext_resource path="res://Assets/UI/cross_hair.png" type="Texture" id=2]
+[ext_resource path="res://Assets/UI/health_bar.png" type="Texture" id=3]
 
 [node name="UI" type="Control" groups=[
 "UI",
@@ -19,6 +20,8 @@ __meta__ = {
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -40.0
+margin_top = 10.0
+margin_right = -10.0
 margin_bottom = 40.0
 alignment = 1
 __meta__ = {
@@ -26,14 +29,29 @@ __meta__ = {
 }
 
 [node name="AmmoLabel" type="Label" parent="HBoxContainer"]
-margin_left = 9.0
-margin_top = 13.0
-margin_right = 30.0
-margin_bottom = 27.0
+margin_left = 4.0
+margin_top = 8.0
+margin_right = 25.0
+margin_bottom = 22.0
 text = "0/0"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthBar" type="TextureProgress" parent="HBoxContainer2"]
+margin_right = 300.0
+margin_bottom = 40.0
+value = 100.0
+texture_progress = ExtResource( 3 )
 
 [node name="InteractLabel" type="Label" parent="."]
 visible = false

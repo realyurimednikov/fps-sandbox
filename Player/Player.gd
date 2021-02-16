@@ -15,6 +15,7 @@ onready var camera = $Head/Camera
 
 var velocity = Vector3()
 var camera_x_rotation = 0
+var health = 100
 
 
 func apply_gravity():
@@ -62,8 +63,17 @@ func _input(event):
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	
+
+
+func update_ui():
+	get_tree().call_group("UI", "update_health", health)
+
 	
 func _process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	
+	#just for test purposes
+	if Input.is_action_pressed("damage_player"):
+		health -= 1
+		update_ui()
