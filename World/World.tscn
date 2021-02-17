@@ -72,10 +72,10 @@ spot_angle = 50.0333
 [node name="Enemies" type="Node" parent="."]
 
 [node name="Enemy" parent="Enemies" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.68229, -14.6784 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.854663, -14.6784 )
 
 [node name="Enemy2" parent="Enemies" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6204, 1.20387, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16.8109, 0, 0 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 5 )

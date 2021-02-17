@@ -12,7 +12,9 @@ height = 1.25
 radius = 0.75
 mid_height = 1.25
 
-[node name="Player" type="KinematicBody"]
+[node name="Player" type="KinematicBody" groups=[
+"Player",
+]]
 script = ExtResource( 1 )
 mouse_sensetivity = 0.15
 
