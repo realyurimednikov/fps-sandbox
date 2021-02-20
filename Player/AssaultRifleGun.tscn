@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Player/AssaultRifleGun.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Guns/assault_rifle.glb" type="PackedScene" id=2]
+
+[sub_resource type="Animation" id=3]
+resource_name = "FireAnimation"
+length = 0.05
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("assault_rifle:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.03, 0.05 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0.0209826, -0.423175, -0.224051 ), Vector3( 0.021, -0.423, -0.3 ), Vector3( 0.0209826, -0.423175, -0.224051 ) ]
+}
+
+[node name="AssaultRifleGun" type="Spatial"]
+
+[node name="RayCast" type="RayCast" parent="."]
+enabled = true
+cast_to = Vector3( 0, 0, -100 )
+collision_mask = 14
+
+[node name="assault_rifle" parent="." instance=ExtResource( 2 )]
+transform = Transform( -2.27227e-08, 0, -0.945948, 0, 0.438725, 0, 0.354236, 0, -3.91429e-07, 0.0209826, -0.423175, -0.224051 )
+
+[node name="Muzzle" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00758123, 2.38419e-07, -1.1705 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/FireAnimation = SubResource( 3 )
+
+[node name="Weapon" type="Node" parent="."]
+script = ExtResource( 1 )
+fire_rate = 0.1
+clip_size = 30
+damage_value = 10
