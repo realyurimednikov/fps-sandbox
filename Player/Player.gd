@@ -12,7 +12,6 @@ onready var head = $Head
 onready var camera = $Head/Camera
 
 
-
 var velocity = Vector3()
 var camera_x_rotation = 0
 var health = 100

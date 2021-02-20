@@ -26,7 +26,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.06944, 0 )
 [node name="InteractionRayCast" type="RayCast" parent="Head/Camera"]
 enabled = true
 cast_to = Vector3( 0, 0, -2 )
-collision_mask = 2
+collision_mask = 4
 script = ExtResource( 3 )
 
 [node name="Gun" parent="Head/Camera" instance=ExtResource( 2 )]

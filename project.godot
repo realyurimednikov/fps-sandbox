@@ -78,6 +78,13 @@ damage_player={
  ]
 }
 
+[layer_names]
+
+3d_physics/layer_1="Player"
+3d_physics/layer_2="Enemy"
+3d_physics/layer_3="Objects"
+3d_physics/layer_4="Environment"
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"

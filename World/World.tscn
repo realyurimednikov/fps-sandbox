@@ -33,6 +33,7 @@ mesh = SubResource( 2 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Ground"]
+collision_layer = 8
 
 [node name="CollisionShape" type="CollisionShape" parent="Ground/StaticBody"]
 shape = SubResource( 3 )
@@ -44,7 +45,7 @@ material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Ground2"]
 transform = Transform( 1, 0, 0, 0, 1, 2.27374e-13, 0, 0, 1, 0, 0, 0 )
-collision_layer = 2
+collision_layer = 8
 
 [node name="CollisionShape" type="CollisionShape" parent="Ground2/StaticBody"]
 shape = SubResource( 3 )
@@ -57,7 +58,7 @@ mesh = SubResource( 5 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="InteractionObject"]
-collision_layer = 2
+collision_layer = 4
 script = ExtResource( 3 )
 light = NodePath("../../SpotLight")
 on_by_default = false
