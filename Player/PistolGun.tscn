@@ -20,6 +20,10 @@ tracks/0/keys = {
 }
 
 [node name="PistolGun" type="Spatial"]
+script = ExtResource( 2 )
+fire_rate = 0.7
+damage_value = 10
+is_active = true
 
 [node name="desert_eagle" parent="." instance=ExtResource( 1 )]
 transform = Transform( -2.44381e-08, 0, -0.2, 0, 0.2, 0, 0.15, 0, -3.25841e-08, 0, 0, 0 )
@@ -31,13 +35,6 @@ collision_mask = 14
 
 [node name="Muzzle" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.393657, -0.852815 )
-
-[node name="Weapon" type="Node" parent="."]
-script = ExtResource( 2 )
-fire_rate = 1.0
-clip_size = 8
-reload_rate = 2
-damage_value = 10
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/FireAnimation = SubResource( 1 )

@@ -10,7 +10,8 @@ export var mouse_sensetivity = 0.3
 
 onready var head = $Head
 onready var camera = $Head/Camera
-
+onready var assault_rifle_gun = $Head/Camera/AssaultRifleGun
+onready var pistol_gun = $Head/Camera/PistolGun
 
 var velocity = Vector3()
 var camera_x_rotation = 0
@@ -40,6 +41,9 @@ func _physics_process(delta):
 	# gravity
 	apply_gravity()
 	
+	# switch weapons
+	switch_weapons()
+	
 	# jump
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y += jump_power
@@ -66,6 +70,21 @@ func _ready():
 
 func update_ui():
 	get_tree().call_group("UI", "update_health", health)
+
+
+func switch_weapons():
+	if Input.is_action_just_pressed("weapon_pistol"):
+		print('Pistol selected')
+		pistol_gun.visible = true
+		assault_rifle_gun.visible = false
+		pistol_gun.enable_gun()
+		assault_rifle_gun.disable_gun()
+	elif Input.is_action_just_pressed("weapon_rifle"):
+		print('Rifle selected')
+		pistol_gun.visible = false
+		assault_rifle_gun.visible = true
+		pistol_gun.disable_gun()
+		assault_rifle_gun.enable_gun()
 
 	
 func _process(delta):
