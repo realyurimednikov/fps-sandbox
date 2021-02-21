@@ -95,3 +95,8 @@ func _process(delta):
 	if Input.is_action_pressed("damage_player"):
 		health -= 1
 		update_ui()
+
+
+func recharge_health(value):
+	health += value
+	update_ui()

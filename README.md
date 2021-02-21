@@ -8,6 +8,7 @@ This is just a sandbox Godot project, that I use to practice various concepts, r
 - Multiple weapons and switching
 - Bullets
 - UI (crosshair, health bar, ammo counters)
+- Items pickup
 
 The project was built with Godot Engine 3.
 
@@ -15,6 +16,7 @@ The project was built with Godot Engine 3.
 
 - Weapons models by [Delthor Games](https://delthor-games.itch.io/gun-pack)
 - Crosshair by [Kenney](https://kenney.nl)
+- Items by [Imersa Studios](https://imersastudios.itch.io/)
 
 ## Contacts
 
