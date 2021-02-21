@@ -5,7 +5,7 @@ onready var ammo_label = $HBoxContainer/AmmoLabel
 onready var interact_label = $InteractLabel
 onready var health_bar = $HBoxContainer2/HealthBar
 
-func update_ui(current, total):
+func update_ammo(current, total):
 	ammo_label.text = str(current) + "/" + str(total)
 
 

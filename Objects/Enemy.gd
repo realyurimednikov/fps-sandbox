@@ -24,7 +24,6 @@ func damage(x):
 
 func _process(delta):
 	if target:
-#		look_at_player()
 		var result = space_state.intersect_ray(global_transform.origin, target.global_transform.origin)
 		var collider = result.collider
 		if collider.is_in_group("Player"):

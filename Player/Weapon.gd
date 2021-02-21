@@ -20,7 +20,7 @@ onready var animation_player = $"./AnimationPlayer"
 onready var bullet = preload("res://Player/Bullet.tscn")
 
 func update_ui():
-	get_tree().call_group("UI", "update_ui", current_ammo, clip_size)
+	get_tree().call_group("UI", "update_ammo", current_ammo, clip_size)
 
 
 func _ready():
@@ -31,9 +31,6 @@ func _ready():
 
 func fire():
 	if raycast.is_colliding():
-#		var col = raycast.get_collider()
-#		if col.is_in_group('Enemies'):
-#			col.damage(damage_value)
 		var b = bullet.instance()
 		muzzle.add_child(b)
 		b.look_at(raycast.get_collision_point(), Vector3.UP)
@@ -44,10 +41,8 @@ func fire():
 func reload():
 	animation_player.stop()
 	reloading = true
-	print('reloading...')
 	yield(get_tree().create_timer(reload_rate), "timeout")
 	current_ammo = clip_size
-	print('reload complete')
 	reloading = false
 	update_ui()
 

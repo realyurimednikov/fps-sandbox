@@ -20,7 +20,12 @@ var health = 100
 
 func apply_gravity():
 	velocity.y -= gravity
+	
 
+
+func jump():
+	if Input.is_action_just_pressed("jump") and is_on_floor():
+		velocity.y += jump_power
 
 func _physics_process(delta):
 	var direction = Vector3()
@@ -45,8 +50,7 @@ func _physics_process(delta):
 	switch_weapons()
 	
 	# jump
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y += jump_power
+	jump()
 	
 	velocity = velocity.linear_interpolate(direction * speed, acceleration * delta)
 	
@@ -55,9 +59,7 @@ func _physics_process(delta):
 
 func _input(event):
 	if event is InputEventMouseMotion:
-		
 		head.rotate_y(deg2rad(-event.relative.x * mouse_sensetivity))
-		
 		var x_delta = event.relative.y * mouse_sensetivity
 		if camera_x_rotation + x_delta > -90 and camera_x_rotation + x_delta < 90:
 			camera.rotate_x(deg2rad(-x_delta))
@@ -74,13 +76,11 @@ func update_ui():
 
 func switch_weapons():
 	if Input.is_action_just_pressed("weapon_pistol"):
-		print('Pistol selected')
 		pistol_gun.visible = true
 		assault_rifle_gun.visible = false
 		pistol_gun.enable_gun()
 		assault_rifle_gun.disable_gun()
 	elif Input.is_action_just_pressed("weapon_rifle"):
-		print('Rifle selected')
 		pistol_gun.visible = false
 		assault_rifle_gun.visible = true
 		pistol_gun.disable_gun()
@@ -92,8 +92,8 @@ func _process(delta):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
 	#just for test purposes
-	if Input.is_action_pressed("damage_player"):
-		health -= 1
+	if Input.is_action_just_pressed("damage_player"):
+		health -= 10
 		update_ui()
 
 
