@@ -8,3 +8,4 @@ Assets/
 GameAssets/
 icon.png
 Levels/LevelDemo.tscn
+*.import
