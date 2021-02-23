@@ -5,7 +5,8 @@ This is just a sandbox Godot project, that I use to practice various concepts, r
 - FPS controller
 - Objects interaction
 - Simple enemy behaviour
-- Multiple weapons and switching
+- Multiple weapons and switching between weapons
+- Fire distance
 - Bullets
 - UI (crosshair, health bar, ammo counters)
 - Items pickup
@@ -25,4 +26,4 @@ Feel free to contact me on [twitter](https://www.twitter.com/iuriimednikov)
 
 ## License
 
-2021 Yuri Mednikov. Released under terms of MIT license
+Copyright (2021) Yuri Mednikov. Released under terms of [MIT license](https://opensource.org/licenses/MIT)
