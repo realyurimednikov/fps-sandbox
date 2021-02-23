@@ -9,6 +9,7 @@ This is just a sandbox Godot project, that I use to practice various concepts, r
 - Bullets
 - UI (crosshair, health bar, ammo counters)
 - Items pickup
+- Camera switching (first person camera/third person camera)
 
 The project was built with Godot Engine 3.
 
