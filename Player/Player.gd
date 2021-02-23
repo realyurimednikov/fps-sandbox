@@ -9,13 +9,16 @@ export var mouse_sensetivity = 0.3
 
 
 onready var head = $Head
-onready var camera = $Head/Camera
-onready var assault_rifle_gun = $Head/Camera/AssaultRifleGun
-onready var pistol_gun = $Head/Camera/PistolGun
+onready var camera = $Head/FirstPersonCamera
+onready var assault_rifle_gun = $Head/FirstPersonCamera/AssaultRifleGun
+onready var pistol_gun = $Head/FirstPersonCamera/PistolGun
+onready var third_person_camera = $ThirdPersonCamera
 
 var velocity = Vector3()
 var camera_x_rotation = 0
 var health = 100
+
+var is_first_person_camera_active = true
 
 
 func apply_gravity():
@@ -28,6 +31,7 @@ func jump():
 		velocity.y += jump_power
 
 func _physics_process(delta):
+	
 	var direction = Vector3()
 	var head_basis = head.global_transform.basis
 	
@@ -58,12 +62,7 @@ func _physics_process(delta):
 
 
 func _input(event):
-	if event is InputEventMouseMotion:
-		head.rotate_y(deg2rad(-event.relative.x * mouse_sensetivity))
-		var x_delta = event.relative.y * mouse_sensetivity
-		if camera_x_rotation + x_delta > -90 and camera_x_rotation + x_delta < 90:
-			camera.rotate_x(deg2rad(-x_delta))
-			camera_x_rotation += x_delta
+	rotate_head(event)
 
 
 func _ready():
@@ -72,6 +71,15 @@ func _ready():
 
 func update_ui():
 	get_tree().call_group("UI", "update_health", health)
+
+
+func rotate_head(event):
+	if event is InputEventMouseMotion and is_first_person_camera_active:
+		head.rotate_y(deg2rad(-event.relative.x * mouse_sensetivity))
+		var x_delta = event.relative.y * mouse_sensetivity
+		if camera_x_rotation + x_delta > -90 and camera_x_rotation + x_delta < 90:
+			camera.rotate_x(deg2rad(-x_delta))
+			camera_x_rotation += x_delta
 
 
 func switch_weapons():
@@ -86,6 +94,15 @@ func switch_weapons():
 		pistol_gun.disable_gun()
 		assault_rifle_gun.enable_gun()
 
+
+func switch_camera():
+	if is_first_person_camera_active:
+		is_first_person_camera_active = false
+	else:
+		is_first_person_camera_active = true
+	
+	camera.current = is_first_person_camera_active
+	third_person_camera.current = !is_first_person_camera_active
 	
 func _process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
@@ -95,6 +112,9 @@ func _process(delta):
 	if Input.is_action_just_pressed("damage_player"):
 		health -= 10
 		update_ui()
+	
+	if Input.is_action_just_pressed("camera_switch"):
+		switch_camera()
 
 
 func recharge_health(value):

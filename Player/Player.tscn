@@ -20,20 +20,21 @@ script = ExtResource( 1 )
 mouse_sensetivity = 0.15
 
 [node name="Head" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.06944, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.019, 1.069, 0 )
 
-[node name="Camera" type="Camera" parent="Head"]
+[node name="FirstPersonCamera" type="Camera" parent="Head"]
+current = true
 
-[node name="InteractionRayCast" type="RayCast" parent="Head/Camera"]
+[node name="InteractionRayCast" type="RayCast" parent="Head/FirstPersonCamera"]
 enabled = true
 cast_to = Vector3( 0, 0, -2 )
 collision_mask = 4
 script = ExtResource( 3 )
 
-[node name="PistolGun" parent="Head/Camera" instance=ExtResource( 2 )]
+[node name="PistolGun" parent="Head/FirstPersonCamera" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.665259, -0.82426, -1.31309 )
 
-[node name="AssaultRifleGun" parent="Head/Camera" instance=ExtResource( 4 )]
+[node name="AssaultRifleGun" parent="Head/FirstPersonCamera" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.675786, -0.884679, -1.75938 )
 visible = false
 
@@ -45,3 +46,6 @@ shape = SubResource( 1 )
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
 mesh = SubResource( 2 )
 material/0 = null
+
+[node name="ThirdPersonCamera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.57751, 2.91274 )
