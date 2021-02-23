@@ -33,9 +33,10 @@ script = ExtResource( 3 )
 
 [node name="PistolGun" parent="Head/FirstPersonCamera" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.665259, -0.82426, -1.31309 )
+fire_distance = -10
 
 [node name="AssaultRifleGun" parent="Head/FirstPersonCamera" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.675786, -0.884679, -1.75938 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.675786, -1.06052, -1.75938 )
 visible = false
 
 [node name="CollisionShape" type="CollisionShape" parent="."]

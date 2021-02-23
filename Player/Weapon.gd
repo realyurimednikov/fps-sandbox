@@ -9,6 +9,7 @@ export var reload_rate = 1
 export var damage_value = 25
 export var is_active = false
 export var shoot_speed = 5
+export var fire_distance = -30
 
 var current_ammo = 0 
 var can_fire = true
@@ -25,6 +26,7 @@ func update_ui():
 
 func _ready():
 	current_ammo = clip_size
+	raycast.cast_to.z = fire_distance
 	if is_active:
 		update_ui()
 	
@@ -49,6 +51,10 @@ func reload():
 
 func _process(delta):
 	if is_active:
+#		if raycast.is_colliding():
+#			can_fire = true
+#		else:
+#			can_fire = false
 		if Input.is_action_pressed("reload") and not reloading:
 			reload()
 		if Input.is_action_just_pressed("primary_fire") and can_fire:
