@@ -33,8 +33,13 @@ _global_script_class_icons={
 [application]
 
 config/name="FPS_Tutorial"
-run/main_scene="res://World/World.tscn"
+run/main_scene="res://Levels/DemoLevel.tscn"
 config/icon="res://icon.png"
+
+[display]
+
+window/size/resizable=false
+window/size/fullscreen=true
 
 [input]
 
