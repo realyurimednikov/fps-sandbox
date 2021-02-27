@@ -14,11 +14,9 @@ This is just a sandbox Godot project, that I use to practice various concepts, r
 
 The project was built with Godot Engine 3.
 
-## Copyrights
+## Assets copyrights
 
-- Weapons models by [Delthor Games](https://delthor-games.itch.io/gun-pack)
-- Crosshair by [Kenney](https://kenney.nl)
-- Items by [Imersa Studios](https://imersastudios.itch.io/)
+- Assets by [Kenney](https://kenney.nl)
 
 ## Contacts
 
