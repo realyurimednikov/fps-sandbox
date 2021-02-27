@@ -106,7 +106,8 @@ func switch_camera():
 	
 func _process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+#		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		get_tree().quit()
 	
 	#just for test purposes
 	if Input.is_action_just_pressed("damage_player"):
