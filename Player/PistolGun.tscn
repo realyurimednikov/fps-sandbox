@@ -1,13 +1,13 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Assets/Guns/desert_eagle.glb" type="PackedScene" id=1]
 [ext_resource path="res://Player/PistolGun.gd" type="Script" id=2]
+[ext_resource path="res://GameAssets/Models/Weapons/Pistol.glb" type="PackedScene" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "FireAnimation"
 length = 0.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("desert_eagle:translation")
+tracks/0/path = NodePath("Pistol:translation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -16,7 +16,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2, 0.5 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 0.05 ), Vector3( 0, 0, 0 ) ]
+"values": [ Vector3( -0.0605557, 0.229895, 0.0966005 ), Vector3( -0.061, 0.23, 0.3 ), Vector3( -0.0605557, 0.229895, 0.0966005 ) ]
 }
 
 [node name="PistolGun" type="Spatial"]
@@ -25,16 +25,17 @@ fire_rate = 0.7
 damage_value = 10
 is_active = true
 
-[node name="desert_eagle" parent="." instance=ExtResource( 1 )]
-transform = Transform( -2.44381e-08, 0, -0.2, 0, 0.2, 0, 0.15, 0, -3.25841e-08, 0, 0, 0 )
+[node name="Pistol" parent="." instance=ExtResource( 3 )]
+transform = Transform( -1, 0, 9.41749e-07, 0, 1.5, 0, -6.27833e-07, 0, -1.5, -0.0605557, 0.229895, 0.0966005 )
 
 [node name="RayCast" type="RayCast" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00266296 )
 enabled = true
 cast_to = Vector3( 0, 0, -30 )
 collision_mask = 14
 
 [node name="Muzzle" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.393657, -0.852815 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.143801, 0.25642, -0.475104 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/FireAnimation = SubResource( 1 )

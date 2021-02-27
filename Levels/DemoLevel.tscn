@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Objects/HealthBox.tscn" type="PackedScene" id=2]
 
 [sub_resource type="PlaneMesh" id=1]
 size = Vector2( 20, 20 )
@@ -32,9 +33,6 @@ material/0 = SubResource( 6 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Ground"]
 shape = SubResource( 2 )
-
-[node name="Player" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.58241, 1.60857, 6.97364 )
 
 [node name="Walls" type="Node" parent="."]
 
@@ -115,3 +113,11 @@ material/0 = SubResource( 4 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Walls/Wall6"]
 shape = SubResource( 5 )
+
+[node name="Objects" type="Node" parent="."]
+
+[node name="HealthBox" parent="Objects" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.182468, 1.41065, 4.67814 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.58241, 1.60857, 6.97364 )

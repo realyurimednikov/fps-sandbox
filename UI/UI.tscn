@@ -1,8 +1,14 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://UI/UI.gd" type="Script" id=1]
-[ext_resource path="res://Assets/UI/cross_hair.png" type="Texture" id=2]
-[ext_resource path="res://Assets/UI/health_bar.png" type="Texture" id=3]
+[ext_resource path="res://GameAssets/UI/Crosshair.png" type="Texture" id=2]
+[ext_resource path="res://GameAssets/UI/HealthBar_fill.png" type="Texture" id=3]
+[ext_resource path="res://GameAssets/UI/HealthBar_back.png" type="Texture" id=4]
+[ext_resource path="res://GameAssets/Fonts/Squarefont.ttf" type="DynamicFontData" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 25
+font_data = ExtResource( 5 )
 
 [node name="UI" type="Control" groups=[
 "UI",
@@ -17,22 +23,19 @@ __meta__ = {
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -40.0
-margin_top = 10.0
-margin_right = -10.0
-margin_bottom = 40.0
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -27.0
+margin_right = 40.0
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="AmmoLabel" type="Label" parent="HBoxContainer"]
-margin_left = 4.0
-margin_top = 8.0
-margin_right = 25.0
-margin_bottom = 22.0
+margin_right = 40.0
+margin_bottom = 27.0
+custom_fonts/font = SubResource( 1 )
 text = "0/0"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -48,9 +51,10 @@ __meta__ = {
 }
 
 [node name="HealthBar" type="TextureProgress" parent="HBoxContainer2"]
-margin_right = 300.0
-margin_bottom = 40.0
+margin_right = 190.0
+margin_bottom = 49.0
 value = 100.0
+texture_under = ExtResource( 4 )
 texture_progress = ExtResource( 3 )
 
 [node name="InteractLabel" type="Label" parent="."]
@@ -72,8 +76,8 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -36.0
-margin_top = -36.0
-margin_right = 36.0
-margin_bottom = 36.0
+margin_left = -72.0
+margin_top = -72.0
+margin_right = 72.0
+margin_bottom = 72.0
 texture = ExtResource( 2 )
