@@ -4,13 +4,14 @@ This is just a sandbox Godot project, that I use to practice various concepts, r
 
 - FPS controller
 - Objects interaction
-- Simple enemy behaviour
+- Simple enemy behaviour (guard, chase, shoot to player)
 - Multiple weapons and switching between weapons
 - Fire distance
 - Bullets
 - UI (crosshair, health bar, ammo counters)
 - Items pickup
 - Camera switching (first person camera/third person camera)
+- Healthbars for enemies
 
 The project was built with Godot Engine 3.
 
