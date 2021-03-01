@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/HealthBox.tscn" type="PackedScene" id=2]
@@ -22,16 +22,6 @@ albedo_color = Color( 0.329412, 0.431373, 0.478431, 1 )
 
 [sub_resource type="BoxShape" id=6]
 extents = Vector3( 1, 2, 5 )
-
-[sub_resource type="ProceduralSky" id=7]
-sky_top_color = Color( 0.0352941, 0.0392157, 0.0392157, 1 )
-sky_horizon_color = Color( 0.027451, 0.14902, 0.25098, 1 )
-ground_horizon_color = Color( 0.0352941, 0.0392157, 0.0392157, 1 )
-sun_color = Color( 0.0117647, 0.0117647, 0.0117647, 1 )
-
-[sub_resource type="Environment" id=8]
-background_mode = 2
-background_sky = SubResource( 7 )
 
 [node name="DemoLevel" type="Spatial"]
 
@@ -142,10 +132,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.85546, 3.31879, 0.4082 )
 [node name="Player" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.58241, 1.60857, 6.97364 )
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 8 )
-
 [node name="Enemies" type="Node" parent="."]
 
 [node name="Enemy" parent="Enemies" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.95964, 0.570987 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.56205, 0 )
+
+[node name="Enemy2" parent="Enemies" instance=ExtResource( 4 )]
+transform = Transform( -0.999984, 3.05163e-11, -0.00570695, 3.05159e-11, 1, 1.63272e-13, 0.00570695, -1.04216e-14, -0.999984, 6.62437, 1.58375, -1.15394 )

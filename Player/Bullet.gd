@@ -27,4 +27,6 @@ func _on_Area_body_entered(body):
 		body.damage(damage)
 	elif body.is_in_group('Destroyables'):
 		body.destroy_object()
+	elif body.is_in_group('Player'):
+		body.damage_player(damage)
 	queue_free()

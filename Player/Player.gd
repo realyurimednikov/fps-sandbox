@@ -121,3 +121,8 @@ func _process(delta):
 func recharge_health(value):
 	health += value
 	update_ui()
+
+
+func damage_player(damage):
+	health -= damage
+	update_ui()

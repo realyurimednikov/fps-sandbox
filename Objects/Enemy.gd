@@ -5,6 +5,10 @@ export var speed = 15
 
 
 onready var sphere = $MeshInstance
+onready var gun = $Gun
+onready var shoot_timer = $ShootTimer
+
+onready var bullet = preload("res://Player/Bullet.tscn")
 
 
 var health = 100
@@ -29,20 +33,24 @@ func _process(delta):
 		if collider.is_in_group("Player"):
 			look_at_player()
 			follow_player(delta)
+			if shoot_timer.is_stopped():
+				shoot_timer.start()
 		else:
 			set_to_green()
+			shoot_timer.stop()
 
 
 func _on_Area_body_entered(body):
 	if body.is_in_group("Player"):
 		target = body
-		set_to_red()
+#		set_to_red()
 
 
 func _on_Area_body_exited(body):
 	if body.is_in_group("Player"):
 		target = null
-		set_to_green()
+		shoot_timer.stop()
+#		set_to_green()
 	
 
 func set_to_green():
@@ -60,3 +68,15 @@ func look_at_player():
 func follow_player(delta):
 	var direction = (target.transform.origin - transform.origin).normalized()
 	move_and_slide(direction * speed * delta, Vector3.UP)
+
+
+func shoot_to_player():
+	print('Shoot!!!!!')
+	var b = bullet.instance()
+	gun.add_child(b)
+	b.set_damage(10)
+	b.shoot = true
+
+
+func _on_ShootTimer_timeout():
+	shoot_to_player()
