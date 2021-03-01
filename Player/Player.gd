@@ -17,7 +17,7 @@ onready var third_person_camera = $ThirdPersonCamera
 var velocity = Vector3()
 var camera_x_rotation = 0
 var health = 100
-
+var selected_weapon = 1
 var is_first_person_camera_active = true
 
 
@@ -53,6 +53,12 @@ func _physics_process(delta):
 	# switch weapons
 	switch_weapons()
 	
+	# switch weapons with two buttons (to test gamepad without gamepad):
+	if Input.is_action_just_pressed("weapon_switch_up"):
+		weapon_switch_up()
+	elif Input.is_action_just_pressed("weapon_switch_down"):
+		weapon_switch_down()
+	
 	# jump
 	jump()
 	
@@ -63,6 +69,15 @@ func _physics_process(delta):
 
 func _input(event):
 	rotate_head(event)
+	
+	if event is InputEventMouseButton:
+		
+		# switch weapons
+		if event.is_pressed():
+			if event.button_index == BUTTON_WHEEL_UP:
+				weapon_switch_up()
+			elif event.button_index == BUTTON_WHEEL_DOWN:
+				weapon_switch_down()
 
 
 func _ready():
@@ -71,6 +86,10 @@ func _ready():
 
 func update_ui():
 	get_tree().call_group("UI", "update_health", health)
+	if selected_weapon == 1:
+		get_tree().call_group("UI", "update_ammo_type", "Pistol")
+	elif selected_weapon == 2:
+		get_tree().call_group("UI", "update_ammo_type", "Rifle")
 
 
 func rotate_head(event):
@@ -84,15 +103,22 @@ func rotate_head(event):
 
 func switch_weapons():
 	if Input.is_action_just_pressed("weapon_pistol"):
+		selected_weapon = 1
+	elif Input.is_action_just_pressed("weapon_rifle"):
+		selected_weapon = 2
+	
+	if selected_weapon == 1:
 		pistol_gun.visible = true
 		assault_rifle_gun.visible = false
 		pistol_gun.enable_gun()
 		assault_rifle_gun.disable_gun()
-	elif Input.is_action_just_pressed("weapon_rifle"):
+	elif selected_weapon == 2:
 		pistol_gun.visible = false
 		assault_rifle_gun.visible = true
 		pistol_gun.disable_gun()
 		assault_rifle_gun.enable_gun()
+	
+	update_ui()
 
 
 func switch_camera():
@@ -126,3 +152,17 @@ func recharge_health(value):
 func damage_player(damage):
 	health -= damage
 	update_ui()
+	
+
+func weapon_switch_up():
+	if selected_weapon < 2:
+		selected_weapon += 1
+	else:
+		selected_weapon = 1
+
+
+func weapon_switch_down():
+	if selected_weapon > 1:
+		selected_weapon -= 1
+	else:
+		selected_weapon = 2
