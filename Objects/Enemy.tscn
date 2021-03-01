@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Objects/Enemy.gd" type="Script" id=1]
+[ext_resource path="res://GameAssets/UI/EnemyHealthBar.png" type="Texture" id=2]
 
 [sub_resource type="SphereMesh" id=1]
 
@@ -44,6 +45,23 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.104779, -2.80862 )
 
 [node name="ShootTimer" type="Timer" parent="."]
 wait_time = 3.0
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6855, 0 )
+flip_h = true
+texture = ExtResource( 2 )
+
+[node name="Viewport" type="Viewport" parent="Sprite3D"]
+size = Vector2( 190, 45 )
+transparent_bg = true
+usage = 0
+render_target_v_flip = true
+
+[node name="TextureProgress" type="TextureProgress" parent="Sprite3D/Viewport"]
+margin_right = 40.0
+margin_bottom = 40.0
+value = 100.0
+texture_progress = ExtResource( 2 )
 [connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
 [connection signal="body_exited" from="Area" to="." method="_on_Area_body_exited"]
 [connection signal="timeout" from="ShootTimer" to="." method="_on_ShootTimer_timeout"]

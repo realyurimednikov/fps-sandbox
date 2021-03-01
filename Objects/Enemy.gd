@@ -6,7 +6,10 @@ export var speed = 15
 
 onready var sphere = $MeshInstance
 onready var gun = $Gun
-onready var shoot_timer = $ShootTimer
+onready var shoot_timer = $ShootTimer 
+onready var viewport = $Sprite3D/Viewport
+onready var health_bar_view = $Sprite3D
+onready var health_bar_progress = $Sprite3D/Viewport/TextureProgress
 
 onready var bullet = preload("res://Player/Bullet.tscn")
 
@@ -18,10 +21,13 @@ var space_state
 
 func _ready():
 	space_state = get_world().direct_space_state
-
+	var texture = viewport.get_texture()
+	health_bar_view.texture = texture
+	
 func damage(x):
-	if health > 0:
+	if health > x:
 		health -= x
+		update_health_bar()
 	else:
 		queue_free()
 		
@@ -80,3 +86,7 @@ func shoot_to_player():
 
 func _on_ShootTimer_timeout():
 	shoot_to_player()
+
+
+func update_health_bar():
+	health_bar_progress.value = health
