@@ -110,6 +110,7 @@ camera_switch={
 3d_physics/layer_2="Enemy"
 3d_physics/layer_3="Objects"
 3d_physics/layer_4="Environment"
+3d_physics/layer_5="Lights"
 
 [rendering]
 
