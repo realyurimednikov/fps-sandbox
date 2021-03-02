@@ -32,7 +32,7 @@ func damage(x):
 		queue_free()
 		
 
-func _process(delta):
+func _physics_process(delta):
 	if target:
 		var result = space_state.intersect_ray(global_transform.origin, target.global_transform.origin)
 		var collider = result.collider
