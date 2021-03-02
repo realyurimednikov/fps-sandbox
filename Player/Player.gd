@@ -7,14 +7,23 @@ export var gravity = 0.98
 export var jump_power = 20
 export var mouse_sensetivity = 0.3
 
+export var sway_left: Vector3
+export var sway_right: Vector3
+export var sway_normal: Vector3
 
 onready var head = $Head
 onready var camera = $Head/FirstPersonCamera
-onready var assault_rifle_gun = $Head/FirstPersonCamera/AssaultRifleGun
-onready var pistol_gun = $Head/FirstPersonCamera/PistolGun
+onready var assault_rifle_gun = $Head/FirstPersonCamera/Hand/AssaultRifleGun
+onready var pistol_gun = $Head/FirstPersonCamera/Hand/PistolGun
 onready var third_person_camera = $ThirdPersonCamera
+onready var hand = $Head/FirstPersonCamera/Hand
 
-var velocity = Vector3()
+
+var velocity: Vector3
+var mouse_mov: float
+
+var sway_threshold = 5
+var sway_lerp = 5
 var camera_x_rotation = 0
 var health = 100
 var selected_weapon = 1
@@ -23,7 +32,6 @@ var is_first_person_camera_active = true
 
 func apply_gravity():
 	velocity.y -= gravity
-	
 
 
 func jump():
@@ -78,7 +86,10 @@ func _input(event):
 				weapon_switch_up()
 			elif event.button_index == BUTTON_WHEEL_DOWN:
 				weapon_switch_down()
-
+	
+	#weapon sway
+	if event is InputEventMouseMotion:
+		mouse_mov = -event.relative.x
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -132,16 +143,19 @@ func switch_camera():
 	
 func _process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
-#		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		get_tree().quit()
-	
-	#just for test purposes
-	if Input.is_action_just_pressed("damage_player"):
-		health -= 10
-		update_ui()
 	
 	if Input.is_action_just_pressed("camera_switch"):
 		switch_camera()
+		
+	# weapon sway
+	if mouse_mov != null:
+		if mouse_mov > sway_threshold:
+			hand.rotation = hand.rotation.linear_interpolate(sway_left, sway_lerp * delta)
+		elif mouse_mov < -sway_threshold:
+			hand.rotation = hand.rotation.linear_interpolate(sway_right, sway_lerp * delta)
+		else:
+			hand.rotation = hand.rotation.linear_interpolate(sway_normal, sway_lerp * delta)
 
 
 func recharge_health(value):
