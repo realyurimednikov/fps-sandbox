@@ -11,6 +11,7 @@ For the moment, it covers following aspects:
 - Doors
 - Simple enemy behaviour (guard, chase, shoot to player)
 - Multiple weapons and switching between weapons (buttons, mouse wheel)
+- Weapon sway effect
 - Fire distance
 - Bullets
 - UI (crosshair, health bar, ammo counter, ammo type)
