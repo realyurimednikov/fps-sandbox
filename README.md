@@ -8,6 +8,7 @@ For the moment, it covers following aspects:
 
 - FPS controller
 - Objects interaction
+- Doors
 - Simple enemy behaviour (guard, chase, shoot to player)
 - Multiple weapons and switching between weapons (buttons, mouse wheel)
 - Fire distance

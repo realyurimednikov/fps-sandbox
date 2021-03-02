@@ -29,7 +29,7 @@ current = true
 [node name="InteractionRayCast" type="RayCast" parent="Head/FirstPersonCamera"]
 enabled = true
 cast_to = Vector3( 0, 0, -2 )
-collision_mask = 4
+collision_mask = 36
 script = ExtResource( 3 )
 
 [node name="PistolGun" parent="Head/FirstPersonCamera" instance=ExtResource( 2 )]
