@@ -31,4 +31,7 @@ Feel free to contact me on [twitter](https://www.twitter.com/iuriimednikov)
 
 ## License
 
-Copyright (2021) Yuri Mednikov (Iurii Mednikov). Released under terms of [MIT license](https://opensource.org/licenses/MIT)
+The project is dual-licensed - it has separate terms for code and assets.
+
+- Code: Copyright (2021) Yuri Mednikov (Iurii Mednikov). Released under terms of [MIT license](https://opensource.org/licenses/MIT)
+- Assets: Copyright (2010-2021) Kenney. Released under terms of [CC1.0 license](https://creativecommons.org/publicdomain/zero/1.0/)
