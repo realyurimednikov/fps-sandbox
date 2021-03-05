@@ -1,5 +1,9 @@
 extends StaticBody
 
 
-func destroy_object():
+func damage(x):
 	queue_free()
+
+
+func _ready():
+	add_to_group('Damageable')

@@ -17,7 +17,7 @@ onready var assault_rifle_gun = $Head/FirstPersonCamera/Hand/AssaultRifleGun
 onready var pistol_gun = $Head/FirstPersonCamera/Hand/PistolGun
 onready var third_person_camera = $ThirdPersonCamera
 onready var hand = $Head/FirstPersonCamera/Hand
-
+onready var active_weapon: Weapon
 
 var velocity: Vector3
 var mouse_mov: float
@@ -28,6 +28,7 @@ var camera_x_rotation = 0
 var health = 100
 var selected_weapon = 1
 var is_first_person_camera_active = true
+
 
 
 func apply_gravity():
@@ -61,6 +62,13 @@ func _physics_process(delta):
 	# switch weapons
 	switch_weapons()
 	
+	if Input.is_action_just_pressed("primary_fire"):
+#		active_weapon.shoot()
+		if active_weapon.is_possible_shoot:
+			active_weapon.shoot()
+	if Input.is_action_pressed("reload"):
+		active_weapon.reload()
+	
 	# switch weapons with two buttons (to test gamepad without gamepad):
 	if Input.is_action_just_pressed("weapon_switch_up"):
 		weapon_switch_up()
@@ -73,6 +81,8 @@ func _physics_process(delta):
 	velocity = velocity.linear_interpolate(direction * speed, acceleration * delta)
 	
 	velocity = move_and_slide(velocity, Vector3.UP)
+	
+	update_ui()
 
 
 func _input(event):
@@ -93,14 +103,19 @@ func _input(event):
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	add_to_group('Damageable')
+	active_weapon = $Head/FirstPersonCamera/Hand/PistolGun
 
 
 func update_ui():
 	get_tree().call_group("UI", "update_health", health)
-	if selected_weapon == 1:
-		get_tree().call_group("UI", "update_ammo_type", "Pistol")
-	elif selected_weapon == 2:
-		get_tree().call_group("UI", "update_ammo_type", "Rifle")
+#	if selected_weapon == 1:
+#		get_tree().call_group("UI", "update_ammo_type", "Pistol")
+#	elif selected_weapon == 2:
+#		get_tree().call_group("UI", "update_ammo_type", "Rifle")
+	if active_weapon != null:
+		get_tree().call_group("UI", "update_ammo", active_weapon.current_ammo, active_weapon.clip_size)
+		get_tree().call_group("UI", "update_ammo_type", active_weapon.weapon_name)
 
 
 func rotate_head(event):
@@ -115,17 +130,21 @@ func rotate_head(event):
 func switch_weapons():
 	if Input.is_action_just_pressed("weapon_pistol"):
 		selected_weapon = 1
+		
 	elif Input.is_action_just_pressed("weapon_rifle"):
 		selected_weapon = 2
+		
 	
 	if selected_weapon == 1:
-		pistol_gun.visible = true
-		assault_rifle_gun.visible = false
+		active_weapon = $Head/FirstPersonCamera/Hand/PistolGun
+#		pistol_gun.visible = true
+#		assault_rifle_gun.visible = false
 		pistol_gun.enable_gun()
 		assault_rifle_gun.disable_gun()
 	elif selected_weapon == 2:
-		pistol_gun.visible = false
-		assault_rifle_gun.visible = true
+		active_weapon = $Head/FirstPersonCamera/Hand/AssaultRifleGun
+#		pistol_gun.visible = false
+#		assault_rifle_gun.visible = true
 		pistol_gun.disable_gun()
 		assault_rifle_gun.enable_gun()
 	
@@ -163,7 +182,7 @@ func recharge_health(value):
 	update_ui()
 
 
-func damage_player(damage):
+func damage(damage):
 	health -= damage
 	update_ui()
 	
