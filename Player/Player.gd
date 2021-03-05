@@ -115,6 +115,10 @@ func update_ui():
 	if active_weapon != null:
 		get_tree().call_group("UI", "update_ammo", active_weapon.current_ammo, active_weapon.clip_size)
 		get_tree().call_group("UI", "update_ammo_type", active_weapon.weapon_name)
+		if active_weapon.is_possible_shoot:
+			get_tree().call_group("UI", "show_crosshair_active", true)
+		else:
+			get_tree().call_group("UI", "show_crosshair_active", false)
 
 
 func rotate_head(event):

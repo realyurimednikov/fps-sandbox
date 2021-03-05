@@ -9,12 +9,14 @@ For the moment, it covers following aspects:
 - FPS controller
 - Objects interaction
 - Doors
+- Destroyable lighting
 - Simple enemy behaviour (guard, chase, shoot to player)
 - Multiple weapons and switching between weapons (buttons, mouse wheel)
 - Weapon sway effect
 - Fire distance
 - Bullets
 - UI (crosshair, health bar, ammo counter, ammo type)
+- Crosshair has 2 modes: active (if possible to shoot), default (if not possible to shoot or while reloading)
 - Items pickup
 - Camera switching (first person camera/third person camera)
 - Healthbars for enemies

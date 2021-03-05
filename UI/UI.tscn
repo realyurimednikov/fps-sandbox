@@ -1,16 +1,17 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://UI/UI.gd" type="Script" id=1]
-[ext_resource path="res://GameAssets/UI/Crosshair.png" type="Texture" id=2]
+[ext_resource path="res://GameAssets/UI/Crosshair_active.png" type="Texture" id=2]
 [ext_resource path="res://GameAssets/UI/HealthBar_fill.png" type="Texture" id=3]
 [ext_resource path="res://GameAssets/UI/HealthBar_back.png" type="Texture" id=4]
 [ext_resource path="res://GameAssets/Fonts/Squarefont.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://GameAssets/UI/Crosshair_default.png" type="Texture" id=6]
 
 [sub_resource type="DynamicFont" id=1]
-size = 25
 font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=2]
+size = 25
 font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=3]
@@ -21,53 +22,10 @@ font_data = ExtResource( 5 )
 ]]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 2.37842
-margin_right = 2.37842
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="HBoxContainer" type="VBoxContainer" parent="."]
-anchor_top = 1.0
-anchor_bottom = 1.0
-margin_top = -49.0
-margin_right = 53.0
-alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="AmmoLabel" type="Label" parent="HBoxContainer"]
-margin_right = 53.0
-margin_bottom = 27.0
-custom_fonts/font = SubResource( 1 )
-text = "0/0"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="WeaponTypeLabel" type="Label" parent="HBoxContainer"]
-margin_top = 31.0
-margin_right = 53.0
-margin_bottom = 49.0
-custom_fonts/font = SubResource( 2 )
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="."]
-margin_left = 10.0
-margin_top = 10.0
-margin_right = 40.0
-margin_bottom = 40.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HealthBar" type="TextureProgress" parent="HBoxContainer2"]
-margin_right = 190.0
-margin_bottom = 49.0
-value = 100.0
-texture_under = ExtResource( 4 )
-texture_progress = ExtResource( 3 )
 
 [node name="InteractLabel" type="Label" parent="."]
 anchor_left = 0.5
@@ -77,12 +35,54 @@ anchor_bottom = 1.0
 margin_left = -81.0
 margin_top = -18.0
 margin_right = 81.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 1 )
 text = "Press E to interact"
 align = 1
 valign = 1
 
-[node name="CrossHair" type="TextureRect" parent="."]
+[node name="HealthBarContainer" type="MarginContainer" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+custom_constants/margin_top = 15
+custom_constants/margin_left = 15
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthBar" type="TextureProgress" parent="HealthBarContainer"]
+margin_left = 15.0
+margin_top = 15.0
+margin_right = 205.0
+margin_bottom = 64.0
+value = 100.0
+texture_under = ExtResource( 4 )
+texture_progress = ExtResource( 3 )
+
+[node name="AmmoContainer" type="VBoxContainer" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 15.0
+margin_top = -50.0
+margin_right = 40.0
+custom_constants/separation = 5
+
+[node name="AmmoLabel" type="Label" parent="AmmoContainer"]
+margin_right = 40.0
+margin_bottom = 27.0
+custom_fonts/font = SubResource( 2 )
+text = "0/0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WeaponTypeLabel" type="Label" parent="AmmoContainer"]
+margin_top = 32.0
+margin_right = 40.0
+margin_bottom = 50.0
+custom_fonts/font = SubResource( 3 )
+
+[node name="CrosshairActive" type="TextureRect" parent="."]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -92,3 +92,14 @@ margin_top = -72.0
 margin_right = 72.0
 margin_bottom = 72.0
 texture = ExtResource( 2 )
+
+[node name="CrosshairDefault" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -72.0
+margin_top = -72.0
+margin_right = 72.0
+margin_bottom = 72.0
+texture = ExtResource( 6 )

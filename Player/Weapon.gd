@@ -43,10 +43,12 @@ func fire():
 
 func reload():
 	do_on_reload()
+	is_possible_shoot = false
 	reloading = true
 	yield(get_tree().create_timer(reload_rate), "timeout")
 	current_ammo = clip_size
 	reloading = false
+	is_possible_shoot = true
 
 
 func shoot():
@@ -83,3 +85,4 @@ func enable_gun():
 func disable_gun():
 	is_active = false
 	visible = false
+	is_possible_shoot = false
