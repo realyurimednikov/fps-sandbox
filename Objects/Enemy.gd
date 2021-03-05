@@ -23,6 +23,7 @@ func _ready():
 	space_state = get_world().direct_space_state
 	var texture = viewport.get_texture()
 	health_bar_view.texture = texture
+	add_to_group('Damageable')
 	
 func damage(x):
 	if health > x:

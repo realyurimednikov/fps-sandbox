@@ -93,6 +93,7 @@ func _input(event):
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	add_to_group('Damageable')
 
 
 func update_ui():
@@ -163,7 +164,7 @@ func recharge_health(value):
 	update_ui()
 
 
-func damage_player(damage):
+func damage(damage):
 	health -= damage
 	update_ui()
 	
