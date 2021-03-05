@@ -33,7 +33,7 @@ func _ready():
 	add_to_group('Damageable')
 
 
-func damage(x):
+func damage(x: float):
 	if health > x:
 		health -= x
 		update_health_bar()

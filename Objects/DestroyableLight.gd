@@ -3,7 +3,7 @@ extends StaticBody
 
 class_name DestroyableLight
 
-func damage(x):
+func damage(x: float):
 	queue_free()
 
 

@@ -176,12 +176,12 @@ func _process(delta):
 			hand.rotation = hand.rotation.linear_interpolate(sway_normal, sway_lerp * delta)
 
 
-func recharge_health(value):
+func recharge_health(value: float):
 	health += value
 	update_ui()
 
 
-func damage(damage):
+func damage(damage: float):
 	health -= damage
 	update_ui()
 	

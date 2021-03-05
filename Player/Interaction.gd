@@ -30,7 +30,7 @@ func _process(delta):
 		get_tree().call_group("UI", "hide_interaction_text")
 
 
-func set_interaction_text(text):
+func set_interaction_text(text: String):
 	var interact_key = OS.get_scancode_string(InputMap.get_action_list("interact")[0].scancode)
 	var value = "Press " + str(interact_key) + " to " + text
 	get_tree().call_group("UI", "show_interaction_text", value)
