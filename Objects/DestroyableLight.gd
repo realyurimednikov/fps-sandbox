@@ -1,6 +1,8 @@
 extends StaticBody
 
 
+class_name DestroyableLight
+
 func damage(x):
 	queue_free()
 

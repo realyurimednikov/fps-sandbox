@@ -1,20 +1,15 @@
 extends RigidBody
 
 
-var damage = 25
-var shoot = false
-var speed = 10
+class_name Bullet
+
+
+var damage: float = 25
+var shoot: bool = false
+var speed:float = 10
 
 func _ready():
 	set_as_toplevel(true)
-
-
-func set_damage(value):
-	damage = value
-	
-
-func set_speed(value):
-	speed = value
 
 
 func _physics_process(delta):
@@ -23,12 +18,6 @@ func _physics_process(delta):
 
 
 func _on_Area_body_entered(body):
-#	if body.is_in_group('Enemies'):
-#		body.damage(damage)
-#	elif body.is_in_group('Destroyables'):
-#		body.destroy_object()
-#	elif body.is_in_group('Player'):
-#		body.damage_player(damage)
 	if body.is_in_group('Damageable'):
 		if body.has_method('damage'):
 			body.damage(damage)

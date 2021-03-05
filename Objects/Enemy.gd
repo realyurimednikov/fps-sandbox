@@ -1,32 +1,38 @@
 extends KinematicBody
 
 
-export var speed = 15
+class_name Enemy
+
+export var speed:float = 15
 
 
 onready var sphere = $MeshInstance
-#onready var gun = $Gun
 onready var shoot_timer = $ShootTimer 
 onready var viewport = $Sprite3D/Viewport
 onready var health_bar_view = $Sprite3D
 onready var health_bar_progress = $Sprite3D/Viewport/TextureProgress
 onready var rifle = $AssaultRifleGun
 
+
 onready var bullet = preload("res://Player/Bullet.tscn")
 
 
-var health = 100
-var target
-var space_state
+var health:float = 100
+var target: Player
+var space_state: PhysicsDirectSpaceState
 
 
 func _ready():
 	rifle.enable_gun()
+	
 	space_state = get_world().direct_space_state
+	
 	var texture = viewport.get_texture()
 	health_bar_view.texture = texture
-	add_to_group('Damageable')
 	
+	add_to_group('Damageable')
+
+
 func damage(x):
 	if health > x:
 		health -= x
@@ -45,29 +51,18 @@ func _physics_process(delta):
 			if shoot_timer.is_stopped():
 				shoot_timer.start()
 		else:
-#			set_to_green()
 			shoot_timer.stop()
 
 
 func _on_Area_body_entered(body):
 	if body.is_in_group("Player"):
-		target = body
-#		set_to_red()
+		target = body as Player
 
 
 func _on_Area_body_exited(body):
 	if body.is_in_group("Player"):
 		target = null
 		shoot_timer.stop()
-#		set_to_green()
-	
-
-#func set_to_green():
-#	sphere.get_surface_material(0).set_albedo(Color(0, 1, 0))
-#
-#
-#func set_to_red():
-#	sphere.get_surface_material(0).set_albedo(Color(1, 0, 0))
 
 
 func look_at_player():
@@ -80,14 +75,8 @@ func follow_player(delta):
 
 
 func shoot_to_player():
-	print('Shoot!!!!!')
-#	rifle.shoot()
 	if rifle.is_possible_shoot:
 		rifle.shoot()
-#	var b = bullet.instance()
-#	gun.add_child(b)
-#	b.set_damage(10)
-#	b.shoot = true
 
 
 func _on_ShootTimer_timeout():

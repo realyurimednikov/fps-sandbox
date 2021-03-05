@@ -1,6 +1,8 @@
 extends Control
 
 
+class_name UI
+
 onready var ammo_label = $HBoxContainer/AmmoLabel
 onready var interact_label = $InteractLabel
 onready var health_bar = $HBoxContainer2/HealthBar

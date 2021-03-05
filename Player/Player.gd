@@ -1,11 +1,14 @@
 extends KinematicBody
 
 
-export var speed = 15
-export var acceleration = 5
-export var gravity = 0.98
-export var jump_power = 20
-export var mouse_sensetivity = 0.3
+class_name Player
+
+
+export var speed: float = 15
+export var acceleration: float = 5
+export var gravity: float = 0.98
+export var jump_power: float = 20
+export var mouse_sensetivity: float = 0.3
 
 export var sway_left: Vector3
 export var sway_right: Vector3
@@ -22,12 +25,12 @@ onready var active_weapon: Weapon
 var velocity: Vector3
 var mouse_mov: float
 
-var sway_threshold = 5
-var sway_lerp = 5
-var camera_x_rotation = 0
-var health = 100
-var selected_weapon = 1
-var is_first_person_camera_active = true
+var sway_threshold: float = 5
+var sway_lerp: float = 5
+var camera_x_rotation: float = 0
+var health: float = 100
+var selected_weapon: float = 1
+var is_first_person_camera_active: bool = true
 
 
 
@@ -63,9 +66,9 @@ func _physics_process(delta):
 	switch_weapons()
 	
 	if Input.is_action_just_pressed("primary_fire"):
-#		active_weapon.shoot()
 		if active_weapon.is_possible_shoot:
 			active_weapon.shoot()
+			
 	if Input.is_action_pressed("reload"):
 		active_weapon.reload()
 	
@@ -109,10 +112,6 @@ func _ready():
 
 func update_ui():
 	get_tree().call_group("UI", "update_health", health)
-#	if selected_weapon == 1:
-#		get_tree().call_group("UI", "update_ammo_type", "Pistol")
-#	elif selected_weapon == 2:
-#		get_tree().call_group("UI", "update_ammo_type", "Rifle")
 	if active_weapon != null:
 		get_tree().call_group("UI", "update_ammo", active_weapon.current_ammo, active_weapon.clip_size)
 		get_tree().call_group("UI", "update_ammo_type", active_weapon.weapon_name)
@@ -137,14 +136,10 @@ func switch_weapons():
 	
 	if selected_weapon == 1:
 		active_weapon = $Head/FirstPersonCamera/Hand/PistolGun
-#		pistol_gun.visible = true
-#		assault_rifle_gun.visible = false
 		pistol_gun.enable_gun()
 		assault_rifle_gun.disable_gun()
 	elif selected_weapon == 2:
 		active_weapon = $Head/FirstPersonCamera/Hand/AssaultRifleGun
-#		pistol_gun.visible = false
-#		assault_rifle_gun.visible = true
 		pistol_gun.disable_gun()
 		assault_rifle_gun.enable_gun()
 	

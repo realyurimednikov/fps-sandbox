@@ -1,5 +1,8 @@
 extends Interactable
 
+class_name InteractableDoor
+
+
 onready var animation_player = $"./AnimationPlayer"
 
 

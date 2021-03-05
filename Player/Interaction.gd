@@ -1,6 +1,9 @@
 extends RayCast
 
 
+class_name Interaction
+
+
 var current_collider
 
 const Interactable = preload("res://Interactable/Interactable.gd")
