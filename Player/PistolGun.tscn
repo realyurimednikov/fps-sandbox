@@ -24,6 +24,7 @@ script = ExtResource( 2 )
 fire_rate = 0.7
 damage_value = 10
 is_active = true
+weapon_name = "Pistol"
 
 [node name="Pistol" parent="." instance=ExtResource( 3 )]
 transform = Transform( -1, 0, 9.41749e-07, 0, 1.5, 0, -6.27833e-07, 0, -1.5, -0.0605557, 0.229895, 0.0966005 )
