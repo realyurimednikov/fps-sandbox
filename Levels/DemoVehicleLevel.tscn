@@ -104,3 +104,12 @@ material/3 = null
 [node name="CollisionShape" type="CollisionShape" parent="SpaceFighter"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.555839, 0 )
 shape = SubResource( 5 )
+
+[node name="CameraPivot" type="Spatial" parent="SpaceFighter"]
+
+[node name="SpringArm" type="SpringArm" parent="SpaceFighter/CameraPivot"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3797, 0 )
+collision_mask = 15
+spring_length = 5.0
+
+[node name="Camera" type="Camera" parent="SpaceFighter/CameraPivot/SpringArm"]

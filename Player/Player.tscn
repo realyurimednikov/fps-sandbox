@@ -44,7 +44,6 @@ damage_value = 25.0
 [node name="AssaultRifleGun" parent="Head/FirstPersonCamera/Hand" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.675786, -1.06052, -1.75938 )
 visible = false
-shoot_speed = 5.0
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
