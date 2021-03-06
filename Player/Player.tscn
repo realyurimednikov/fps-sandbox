@@ -34,16 +34,17 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22235, -0.00208926 )
 [node name="InteractionRayCast" type="RayCast" parent="Head/FirstPersonCamera/Hand"]
 enabled = true
 cast_to = Vector3( 0, 0, -2 )
-collision_mask = 36
+collision_mask = 100
 script = ExtResource( 3 )
 
 [node name="PistolGun" parent="Head/FirstPersonCamera/Hand" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.665259, -0.82426, -1.31309 )
-fire_distance = -10
+damage_value = 25.0
 
 [node name="AssaultRifleGun" parent="Head/FirstPersonCamera/Hand" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.675786, -1.06052, -1.75938 )
 visible = false
+shoot_speed = 5.0
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
