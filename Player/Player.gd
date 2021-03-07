@@ -21,6 +21,8 @@ onready var pistol_gun = $Head/FirstPersonCamera/Hand/PistolGun
 onready var third_person_camera = $ThirdPersonCamera
 onready var hand = $Head/FirstPersonCamera/Hand
 onready var active_weapon: Weapon
+onready var interaction_raycast = $Head/FirstPersonCamera/Hand/InteractionRayCast
+
 
 var velocity: Vector3
 var mouse_mov: float
@@ -207,12 +209,14 @@ func enable_player():
 	is_active = true
 	visible = true
 	camera.current = true
+	interaction_raycast.enable()
 
 
 func disable_player():
 	is_active = false
 	visible = false
 	camera.current = false
+	interaction_raycast.disable()
 
 
 func update_player_position(position):
