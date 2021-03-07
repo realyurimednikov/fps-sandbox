@@ -17,6 +17,7 @@ mid_height = 1.25
 [node name="Player" type="KinematicBody" groups=[
 "Player",
 ]]
+collision_mask = 127
 script = ExtResource( 1 )
 mouse_sensetivity = 0.15
 sway_left = Vector3( 0, 0.1, 0 )

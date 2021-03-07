@@ -22,7 +22,7 @@ onready var third_person_camera = $ThirdPersonCamera
 onready var hand = $Head/FirstPersonCamera/Hand
 onready var active_weapon: Weapon
 onready var interaction_raycast = $Head/FirstPersonCamera/Hand/InteractionRayCast
-
+onready var collision_shape = $CollisionShape
 
 var velocity: Vector3
 var mouse_mov: float
@@ -210,6 +210,7 @@ func enable_player():
 	visible = true
 	camera.current = true
 	interaction_raycast.enable()
+	collision_shape.disabled = false
 
 
 func disable_player():
@@ -217,6 +218,7 @@ func disable_player():
 	visible = false
 	camera.current = false
 	interaction_raycast.disable()
+	collision_shape.disabled = true
 
 
 func update_player_position(position):
