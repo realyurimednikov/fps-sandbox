@@ -9,7 +9,7 @@ onready var health_bar = $HealthBarContainer/HealthBar
 onready var ammo_type_label = $AmmoContainer/WeaponTypeLabel
 onready var crosshair_default = $CrosshairDefault
 onready var crosshair_active = $CrosshairActive
-
+onready var crosshair_vehicle = $CrosshairVehicle
 
 
 func update_ammo(current: float, total: float):
@@ -40,3 +40,20 @@ func show_crosshair_active(is_active: bool):
 	else:
 		crosshair_active.visible = false
 		crosshair_default.visible = true
+
+
+func activate_vehicle_ui(is_active: bool):
+	if is_active:
+		crosshair_active.visible = false
+		crosshair_default.visible = false
+		crosshair_vehicle.visible = true
+		
+		ammo_label.visible = false
+		ammo_type_label.visible = false
+		
+	else:
+		crosshair_default.visible = true
+		crosshair_vehicle.visible = false
+		
+		ammo_label.visible = true
+		ammo_type_label.visible = true

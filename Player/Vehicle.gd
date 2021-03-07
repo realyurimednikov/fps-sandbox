@@ -16,6 +16,7 @@ func use_vehicle():
 	is_activated = true
 	do_on_embark()
 	get_tree().call_group('Player', 'disable_player')
+	get_tree().call_group('UI', 'activate_vehicle_ui', true)
 
 
 func drop_vehicle():
@@ -23,6 +24,7 @@ func drop_vehicle():
 	is_activated = false
 	do_on_disembark()
 	get_tree().call_group('Player', 'enable_player')
+	get_tree().call_group('UI', 'activate_vehicle_ui', false)
 #	get_tree().call_group('Player', 'update_player_position', transform.origin)
 	
 
