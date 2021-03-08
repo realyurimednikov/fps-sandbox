@@ -2,7 +2,7 @@
 
 This is a Godot playground, that I use to practice various concepts, related to the FPS (first-person shooter) development.
 
-![](https://pbs.twimg.com/media/EvPlc4iWQAQA_JV?format=jpg&name=large)
+![](https://pbs.twimg.com/media/Evzoy4RWYAI3DEE?format=jpg&name=large)
 
 For the moment, it covers following aspects:
 
@@ -18,8 +18,9 @@ For the moment, it covers following aspects:
 - UI (crosshair, health bar, ammo counter, ammo type)
 - Crosshair has 2 modes: active (if possible to shoot), default (if not possible to shoot or while reloading)
 - Items pickup
-- Camera switching (first person camera/third person camera)
+- Camera switch
 - Healthbars for enemies
+- Vehicles mode (police car)
 
 The project was built with Godot v.3.2.3. Tested on Windows 10.
 
