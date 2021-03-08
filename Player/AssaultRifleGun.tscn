@@ -23,8 +23,7 @@ tracks/0/keys = {
 [node name="AssaultRifleGun" type="Spatial"]
 script = ExtResource( 1 )
 fire_rate = 0.2
-clip_size = 30
-shoot_speed = 15
+clip_size = 30.0
 weapon_name = "Rifle"
 
 [node name="RayCast" type="RayCast" parent="."]

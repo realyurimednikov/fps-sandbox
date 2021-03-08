@@ -21,9 +21,12 @@ onready var pistol_gun = $Head/FirstPersonCamera/Hand/PistolGun
 onready var third_person_camera = $ThirdPersonCamera
 onready var hand = $Head/FirstPersonCamera/Hand
 onready var active_weapon: Weapon
+onready var interaction_raycast = $Head/FirstPersonCamera/Hand/InteractionRayCast
+onready var collision_shape = $CollisionShape
 
 var velocity: Vector3
 var mouse_mov: float
+var is_active: bool = true
 
 var sway_threshold: float = 5
 var sway_lerp: float = 5
@@ -44,48 +47,50 @@ func jump():
 
 func _physics_process(delta):
 	
-	var direction = Vector3()
-	var head_basis = head.global_transform.basis
+	if is_active:
 	
-	if Input.is_action_pressed("move_forward"):
-		direction -= head_basis.z
-	elif Input.is_action_pressed("move_backward"):
-		direction += head_basis.z
-	
-	if Input.is_action_pressed("move_left"):
-		direction -= head_basis.x
-	elif Input.is_action_pressed("move_right"):
-		direction += head_basis.x
+		var direction = Vector3()
+		var head_basis = head.global_transform.basis
+		
+		if Input.is_action_pressed("move_forward"):
+			direction -= head_basis.z
+		elif Input.is_action_pressed("move_backward"):
+			direction += head_basis.z
+		
+		if Input.is_action_pressed("move_left"):
+			direction -= head_basis.x
+		elif Input.is_action_pressed("move_right"):
+			direction += head_basis.x
 
-	direction = direction.normalized()
-	
-	# gravity
-	apply_gravity()
-	
-	# switch weapons
-	switch_weapons()
-	
-	if Input.is_action_just_pressed("primary_fire"):
-		if active_weapon.is_possible_shoot:
-			active_weapon.shoot()
-			
-	if Input.is_action_pressed("reload"):
-		active_weapon.reload()
-	
-	# switch weapons with two buttons (to test gamepad without gamepad):
-	if Input.is_action_just_pressed("weapon_switch_up"):
-		weapon_switch_up()
-	elif Input.is_action_just_pressed("weapon_switch_down"):
-		weapon_switch_down()
-	
-	# jump
-	jump()
-	
-	velocity = velocity.linear_interpolate(direction * speed, acceleration * delta)
-	
-	velocity = move_and_slide(velocity, Vector3.UP)
-	
-	update_ui()
+		direction = direction.normalized()
+		
+		# gravity
+		apply_gravity()
+		
+		# switch weapons
+		switch_weapons()
+		
+		if Input.is_action_just_pressed("primary_fire"):
+			if active_weapon.is_possible_shoot:
+				active_weapon.shoot()
+				
+		if Input.is_action_pressed("reload"):
+			active_weapon.reload()
+		
+		# switch weapons with two buttons (to test gamepad without gamepad):
+		if Input.is_action_just_pressed("weapon_switch_up"):
+			weapon_switch_up()
+		elif Input.is_action_just_pressed("weapon_switch_down"):
+			weapon_switch_down()
+		
+		# jump
+		jump()
+		
+		velocity = velocity.linear_interpolate(direction * speed, acceleration * delta)
+		
+		velocity = move_and_slide(velocity, Vector3.UP)
+		
+		update_ui()
 
 
 func _input(event):
@@ -198,3 +203,23 @@ func weapon_switch_down():
 		selected_weapon -= 1
 	else:
 		selected_weapon = 2
+
+
+func enable_player():
+	is_active = true
+	visible = true
+	camera.current = true
+	interaction_raycast.enable()
+	collision_shape.disabled = false
+
+
+func disable_player():
+	is_active = false
+	visible = false
+	camera.current = false
+	interaction_raycast.disable()
+	collision_shape.disabled = true
+
+
+func update_player_position(position):
+	transform.origin = position
