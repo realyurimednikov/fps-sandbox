@@ -46,14 +46,14 @@ func activate_vehicle_ui(is_active: bool):
 	if is_active:
 		crosshair_active.visible = false
 		crosshair_default.visible = false
-		crosshair_vehicle.visible = true
+#		crosshair_vehicle.visible = true
 		
 		ammo_label.visible = false
 		ammo_type_label.visible = false
 		
 	else:
 		crosshair_default.visible = true
-		crosshair_vehicle.visible = false
+#		crosshair_vehicle.visible = false
 		
 		ammo_label.visible = true
 		ammo_type_label.visible = true
