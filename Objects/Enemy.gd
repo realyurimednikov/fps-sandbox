@@ -38,6 +38,7 @@ func damage(x: float):
 		health -= x
 		update_health_bar()
 	else:
+		get_tree().call_group('UI', 'show_kill_notification')
 		queue_free()
 		
 
