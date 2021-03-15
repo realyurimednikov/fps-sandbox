@@ -4,7 +4,8 @@ extends KinematicBody
 class_name Player
 
 
-export var speed: float = 15
+export var normal_speed: float = 15
+export var run_speed: float = 35
 export var acceleration: float = 5
 export var gravity: float = 0.98
 export var jump_power: float = 20
@@ -85,6 +86,8 @@ func _physics_process(delta):
 		
 		# jump
 		jump()
+		
+		var speed = run_speed if Input.is_action_pressed("move_run") else normal_speed
 		
 		velocity = velocity.linear_interpolate(direction * speed, acceleration * delta)
 		
