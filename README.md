@@ -22,7 +22,10 @@ For the moment, it covers following aspects:
 - Healthbars for enemies
 - Vehicles mode (police car)
 
-The project was built with Godot v.3.2.3. Tested on Windows 10.
+The project was tested on:
+
+- Windows 10
+- Linux (Ubuntu 20.04 LTS)
 
 ## Assets copyrights
 
@@ -31,7 +34,7 @@ The project was built with Godot v.3.2.3. Tested on Windows 10.
 
 ## Contacts
 
-Feel free to contact me on [twitter](https://www.twitter.com/iuriimednikov)
+Feel free to contact me on [twitter](https://www.twitter.com/yurimednikov)
 
 ## License
 
