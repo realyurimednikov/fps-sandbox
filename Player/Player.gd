@@ -190,8 +190,11 @@ func recharge_health(value: float):
 
 
 func damage(damage: float):
-	health -= damage
-	update_ui()
+	if (health > damage):
+		health -= damage
+		update_ui()
+	else:
+		health = 100
 	
 
 func weapon_switch_up():
