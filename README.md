@@ -27,6 +27,8 @@ The project was tested on:
 - Windows 10
 - Linux (Ubuntu 20.04 LTS)
 
+The project was tested with Godot Engine v.3.2.3 & v.3.3
+
 ## Assets copyrights
 
 - Assets by [Kenney](https://kenney.nl)
