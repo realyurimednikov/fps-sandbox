@@ -99,7 +99,7 @@ _global_script_class_icons={
 [application]
 
 config/name="FPS_Tutorial"
-run/main_scene="res://Levels/DemoLevel.tscn"
+run/main_scene="res://Levels/DemoVehicleLevel.tscn"
 config/icon="res://icon.png"
 
 [display]

@@ -2,7 +2,7 @@
 
 This is a Godot playground, that I use to practice various concepts, related to the FPS (first-person shooter) development.
 
-![](https://pbs.twimg.com/media/Evzoy4RWYAI3DEE?format=jpg&name=large)
+![](https://mednikov.me/wp-content/uploads/2021/05/godot_vehiclemode_embark_and_disemebark.gif)
 
 For the moment, it covers following aspects:
 
@@ -29,6 +29,12 @@ The project was tested on:
 
 The project was tested with Godot Engine v.3.2.3 & v.3.3
 
+## Posts
+
+You can see this project in following blogposts about Godot Engine:
+
+- [Vehicle mode for FPS games in Godot](https://mednikov.me/vehicle-mode-for-fps-games-in-godot/)
+
 ## Assets copyrights
 
 - Assets by [Kenney](https://kenney.nl)
@@ -44,7 +50,7 @@ The project is dual-licensed - it has separate terms for code and assets.
 
 Code: 
 
-Copyright (2021) Yuri Mednikov (Iurii Mednikov). Released under terms of [MIT license](https://opensource.org/licenses/MIT)
+Copyright (2021) [Iurii Mednikov](https://mednikov.me). Released under terms of [MIT license](https://opensource.org/licenses/MIT)
 
 Assets: 
 
